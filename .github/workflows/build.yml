@@ -1,19 +1,23 @@
-name: Check Diwaniya Sports TV project
+
+name: Prepare Diwaniya Sports TV
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
-  check:
+  prepare:
     runs-on: ubuntu-latest
     steps:
-      - name: Download project files
+      - name: Download repository
         uses: actions/checkout@v4
 
-      - name: Check app interface exists
-        run: test -f index.html
-
-      - name: Show project files
-        run: ls -la
+      - name: Extract starter ZIP
+        run: |
+          unzip -o DiwaniyaSportsTV-starter.zip -d extracted
+          echo "Project files extracted:"
+          find extracted -maxdepth 3 -type f
