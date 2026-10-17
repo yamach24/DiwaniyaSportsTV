@@ -1,23 +1,24 @@
 
-name: Prepare Diwaniya Sports TV
+name: Diwaniya Sports TV - Toolchain Check
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
 
-permissions:
-  contents: read
-
 jobs:
-  prepare:
+  check-toolchain:
     runs-on: ubuntu-latest
     steps:
-      - name: Download repository
+      - name: Checkout project
         uses: actions/checkout@v4
 
-      - name: Extract starter ZIP
+      - name: Check project interface
+        run: test -f index.html
+
+      - name: Download OpenOrbis toolchain
         run: |
-          unzip -o DiwaniyaSportsTV-starter.zip -d extracted
-          echo "Project files extracted:"
-          find extracted -maxdepth 3 -type f
+          git clone --depth 1 https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain.git toolchain
+          echo "Toolchain repository downloaded"
+          ls -la toolchain
+          
