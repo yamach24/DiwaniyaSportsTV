@@ -1,58 +1,80 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diwaniya Sports TV</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#07111f;color:white;font-family:Arial,sans-serif}
-header{background:#102b46;padding:24px;text-align:center;border-bottom:3px solid #00d6a0}
-h1{margin:0;color:#00e6ad;font-size:30px}
-header p{margin:10px 0 0;color:#d5e6f5}
-main{max-width:900px;margin:auto;padding:20px}
-h2{color:#00e6ad}
-.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-button{background:#123653;color:white;border:2px solid #315675;border-radius:12px;padding:22px 10px;font-size:19px;cursor:pointer}
-button:focus,button:hover{outline:3px solid #00e6ad;background:#176047}
-.panel{background:#10243a;padding:20px;border-radius:12px;margin-top:20px;line-height:1.8}
-.small{font-size:14px;color:#b7c9d9}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ديوانية سبورت TV</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #08111f;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    header {
+      padding: 28px 12px;
+      background: #101e32;
+      border-bottom: 3px solid #20d69a;
+    }
+    h1 { color: #20d69a; margin: 0 0 10px; }
+    main { padding: 24px 14px; }
+    .panel {
+      max-width: 650px;
+      margin: 18px auto;
+      padding: 24px 16px;
+      background: #14243a;
+      border: 1px solid #29415d;
+      border-radius: 14px;
+    }
+    .watch {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 17px 30px;
+      background: #20d69a;
+      color: #07151a;
+      border-radius: 10px;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .note { color: #c2ccda; line-height: 1.8; }
+    a:focus { outline: 4px solid white; }
+    footer { padding: 20px; color: #9aabc0; }
+  </style>
 </head>
 <body>
-<header>
-<h1>Diwaniya Sports TV</h1>
-<p>قناتك الرياضية — تابع رياضتك المفضلة</p>
-</header>
-<main>
-<h2>القائمة الرئيسية</h2>
-<div class="menu">
-<button onclick="show('football')">⚽ كرة القدم</button>
-<button onclick="show('matches')">📺 المباريات</button>
-<button onclick="show('channels')">🏆 القنوات الرياضية</button>
-<button onclick="show('about')">ℹ️ حول التطبيق</button>
-</div>
-<div class="panel" id="panel">
-<h2>أهلاً بك</h2>
-استخدم أزرار يد PS4 للتنقل بين أقسام التطبيق.
-<p class="small">هذه نسخة أولية للواجهة، ولا تحتوي بعد على بث مباشر.</p>
-</div>
-</main>
-<script>
-function show(section){
-const p=document.getElementById('panel');
-const data={
-football:['كرة القدم','أخبار وفعاليات كرة القدم ستضاف هنا.'],
-matches:['المباريات','جدول المباريات وروابط البث الرسمية ستضاف بعد تجهيزها.'],
-channels:['القنوات الرياضية','ستظهر هنا القنوات التي توفر بثاً رسمياً ومجانياً عند توفر روابطها.'],
-about:['حول التطبيق','Diwaniya Sports TV — إصدار تجريبي للواجهة.']
-};
-p.innerHTML='<h2>'+data[section][0]+'</h2><p>'+data[section][1]+'</p><button onclick="show(\\'home\\')">العودة للرئيسية</button>';
-if(section==='home')p.innerHTML='<h2>أهلاً بك</h2><p>اختر قسماً من القائمة الرئيسية.</p>';
-}
-document.addEventListener('keydown',function(e){
-if(e.key==='Escape')location.reload();
-});
-</script>
+  <header>
+    <h1>ديوانية سبورت TV</h1>
+    <div>عالم المباريات بين إيديك</div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>⚽ مشاهدة المباريات</h2>
+      <p class="note">
+        اضغط أدناه لفتح موقع سبورتينا ومتابعة المباريات
+        والمحتوى الرياضي المتاح.
+      </p>
+      <a class="watch"
+         href="https://www.sportinaa.com/"
+         target="_blank"
+         rel="noopener">
+        ▶ مشاهدة عبر سبورتينا
+      </a>
+    </section>
+
+    <section class="panel">
+      <h2>📺 المباريات والأخبار</h2>
+      <p class="note">
+        اختر مشاهدة سبورتينا لمعرفة المحتوى المتاح حالياً.
+        توفر البث يعتمد على الموقع وحقوق النقل.
+      </p>
+    </section>
+  </main>
+
+  <footer>Diwaniya Sports TV</footer>
 </body>
 </html>
