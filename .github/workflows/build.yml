@@ -4,7 +4,11 @@ name: Diwaniya Sports TV - Prepare Project
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
+
+permissions:
+  contents: read
 
 jobs:
   prepare:
@@ -17,6 +21,15 @@ jobs:
         run: |
           mkdir -p extracted
           unzip -o DiwaniyaSportsTV-starter.zip -d extracted
-          echo "Files found in the archive:"
           find extracted -type f
-          
+
+      - name: Package extracted project
+        run: |
+          cd extracted
+          zip -r ../DiwaniyaSportsTV-Project.zip .
+
+      - name: Upload project files
+        uses: actions/upload-artifact@v4
+        with:
+          name: DiwaniyaSportsTV-Project
+          path: DiwaniyaSportsTV-Project.zip
