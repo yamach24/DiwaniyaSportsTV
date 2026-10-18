@@ -1,5 +1,5 @@
 
-name: Diwaniya Sports TV - Toolchain Check
+name: Diwaniya Sports TV Build
 
 on:
   workflow_dispatch:
@@ -7,18 +7,22 @@ on:
     branches: [main]
 
 jobs:
-  check-toolchain:
+  prepare:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout project
+      - name: Download project
         uses: actions/checkout@v4
 
-      - name: Check project interface
+      - name: Check web interface
         run: test -f index.html
 
-      - name: Download OpenOrbis toolchain
+      - name: Check native source
+        run: test -f native/src/main.cpp
+
+      - name: Show build requirements
         run: |
-          git clone --depth 1 https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain.git toolchain
-          echo "Toolchain repository downloaded"
-          ls -la toolchain
+          echo "Project files are present."
+          echo "A PS4 SDK and native app configuration are still required."
+          echo "This workflow does not create a PKG yet."
+          find native data -maxdepth 3 -type f
           
