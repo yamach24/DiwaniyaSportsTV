@@ -1,5 +1,5 @@
 
-name: Diwaniya Sports TV Build
+name: Diwaniya Sports TV - Prepare Project
 
 on:
   workflow_dispatch:
@@ -10,19 +10,13 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
-      - name: Download project
+      - name: Checkout project
         uses: actions/checkout@v4
 
-      - name: Check web interface
-        run: test -f index.html
-
-      - name: Check native source
-        run: test -f native/src/main.cpp
-
-      - name: Show build requirements
+      - name: Extract starter ZIP
         run: |
-          echo "Project files are present."
-          echo "A PS4 SDK and native app configuration are still required."
-          echo "This workflow does not create a PKG yet."
-          find native data -maxdepth 3 -type f
+          mkdir -p extracted
+          unzip -o DiwaniyaSportsTV-starter.zip -d extracted
+          echo "Files found in the archive:"
+          find extracted -type f
           
